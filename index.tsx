@@ -24,11 +24,11 @@ body {
 .game-container {
   width: 800px;
   max-width: 100%;
-  height: 100%;
-  max-height: 100svh; /* Smallest Viewport Height to fit within visible area */
+  height: 100vh; /* Use vh to fill screen, relying on padding to push content up */
   display: flex;
   flex-direction: column;
   padding: 10px;
+  padding-bottom: 80px; /* Force extra space at bottom for address bar */
   box-sizing: border-box;
   position: relative;
 }
@@ -36,6 +36,7 @@ body {
 @media (max-width: 600px) {
   .game-container {
     padding: 5px;
+    padding-bottom: 80px; /* Ensure bottom padding on mobile */
   }
   .window {
     padding: 8px;
@@ -61,11 +62,11 @@ body {
     font-size: 0.9rem;
   }
   .bottom-section {
-    height: 180px; /* Reduce height for mobile */
+    height: 160px; /* Further reduce height for mobile to ensure fit */
     gap: 10px;
   }
   .player-area {
-    width: 140px; /* Reduce player image width */
+    width: 130px; /* Further reduce player image width */
   }
   .game-over-text {
     font-size: 2rem;
