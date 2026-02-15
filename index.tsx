@@ -57,10 +57,10 @@ body {
     margin-bottom: 5px;
   }
   .money-value {
-    font-size: 1.2rem;
+    font-size: 1.0rem; /* Shrink money font size */
   }
   .cmd-btn {
-    padding: 6px 2px;
+    padding: 4px 1px; /* Shrink button padding */
     font-size: 0.75rem;
     white-space: nowrap;
   }
@@ -70,6 +70,7 @@ body {
   }
   .player-area {
     width: 130px;
+    flex-shrink: 0; /* Prevent shrinking */
   }
   .command-window {
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
@@ -279,6 +280,30 @@ body {
   80% { transform: translate(10px, 0); }
   100% { transform: translate(0, 0); }
 }
+
+/* ゲームクリア画面 */
+.game-clear-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9); /* Slight transparency or solid white/light color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 1s;
+  color: #333;
+}
+
+.game-clear-text {
+  font-size: 3rem;
+  color: #4caf50;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 `;
 
 // 画像リソース
@@ -324,6 +349,13 @@ const htmlContent = `
     <div class="game-over-text">ぼったくられた…</div>
     <button id="btn-retry" class="cmd-btn" style="margin-top: 20px;">もう一度挑戦する</button>
   </div>
+
+  <!-- ゲームクリア画面（非表示で初期化） -->
+  <div id="game-clear-screen" class="game-clear-screen" style="display: none;">
+    <img src="${IMG_NORMAL}" alt="Game Clear" class="game-over-img" style="border-color: #4caf50; background: #eee;">
+    <div class="game-clear-text">無事帰宅成功！</div>
+    <button id="btn-reset" class="cmd-btn" style="margin-top: 20px; color: #fff; background: #333; border-color: #333;">明日も仕事だ…</button>
+  </div>
 </div>
 `;
 
@@ -356,6 +388,7 @@ function startGame() {
   const elEnemyName = document.getElementById('enemy-name');
   const elEnemyNameWindow = document.getElementById('enemy-name-window');
   const elGameOverScreen = document.getElementById('game-over-screen');
+  const elGameClearScreen = document.getElementById('game-clear-screen');
   const elGameContainer = document.getElementById('game-container');
   const elPlayerImg = document.getElementById('player-img') as HTMLImageElement;
 
@@ -502,6 +535,9 @@ function startGame() {
           elEnemyNameWindow.style.color = "#4caf50";
           elEnemyNameWindow.style.borderColor = "#4caf50";
           // ゲームクリア演出
+          setTimeout(() => {
+            elGameClearScreen.style.display = 'flex';
+          }, 1000);
         } else {
           log("ボーイに止められた！<br>「お客様、まだお楽しみいただけますよ？」");
           log("帰れない！");
@@ -520,6 +556,14 @@ function startGame() {
   const btnRetry = document.getElementById('btn-retry');
   if (btnRetry) {
     btnRetry.addEventListener('click', () => {
+      location.reload();
+    });
+  }
+
+  // リセットボタン（クリア時）
+  const btnReset = document.getElementById('btn-reset');
+  if (btnReset) {
+    btnReset.addEventListener('click', () => {
       location.reload();
     });
   }
