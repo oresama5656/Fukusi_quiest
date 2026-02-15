@@ -108,7 +108,7 @@ body {
 
   /* ボタン: コンパクト */
   .cmd-btn {
-    padding: 4px 3px !important;
+    padding: 2px 3px !important;
     font-size: 20px !important;
     white-space: nowrap !important;
     text-align: left !important;
