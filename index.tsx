@@ -41,8 +41,9 @@ body {
     padding-bottom: 20px;
   }
   .window {
-    padding: 8px;
-    margin-bottom: 5px;
+    padding: 4px; /* Smaller padding */
+    margin-bottom: 4px;
+    border-width: 2px; /* Thinner border */
   }
   .enemy-name {
     font-size: 1.1rem;
@@ -53,12 +54,13 @@ body {
     line-height: 1.4;
   }
   .status-window {
-    font-size: 1rem;
-    margin-bottom: 5px;
+    font-size: 0.9rem; /* Smaller text */
+    margin-bottom: 2px; /* Minimal margin */
+    padding: 2px 4px; /* Compact padding */
   }
   .money-value {
     font-size: 1.0rem;
-    margin-left: 5px; /* Reduce margin */
+    margin-left: 5px;
   }
   .cmd-btn {
     padding: 4px 0px; /* Minimal padding */
@@ -70,8 +72,8 @@ body {
     margin-right: 2px; /* Reduce icon margin */
   }
   .bottom-section {
-    height: 160px;
-    gap: 2px; /* Reduce gap */
+    height: 140px; /* Reduced height */
+    gap: 2px;
   }
   .stats-area {
     min-width: 0; /* Allow shrinking */
