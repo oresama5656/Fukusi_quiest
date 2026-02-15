@@ -107,14 +107,14 @@ body {
 
   /* ボタン: コンパクト */
   .cmd-btn {
-    padding: 1px 0 !important; /* 余白ゼロ */
-    font-size: 1px !important; /* 1pxテスト */
+    padding: 4px 3px !important; /* 少しだけ余白 */
+    font-size: 10px !important; /* 読みやすいサイズ */
     white-space: nowrap !important;
     text-align: left !important;
     border-width: 1px !important;
     min-height: 0 !important;
     overflow: hidden !important;
-    display: block !important; /* flexを解除して左揃え確定 */
+    display: block !important;
   }
   .cmd-btn::before {
     content: none;
