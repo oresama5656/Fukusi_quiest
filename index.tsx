@@ -61,10 +61,10 @@ body {
     margin-left: 5px; /* Reduce margin */
   }
   .cmd-btn {
-    padding: 6px 0px; /* Maximize text space */
-    font-size: 0.7rem; /* Slightly smaller */
+    padding: 4px 0px; /* Minimal padding */
+    font-size: 0.6rem; /* Very small font */
     white-space: nowrap;
-    justify-content: center; /* Center text */
+    justify-content: center;
   }
   .cmd-btn::before {
     margin-right: 2px; /* Reduce icon margin */
@@ -81,8 +81,8 @@ body {
     flex-shrink: 0; /* Prevent shrinking */
   }
   .command-window {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px; /* Reduce gap */
+    grid-template-columns: repeat(2, 1fr); /* 2 columns (2 rows) to save width */
+    gap: 2px;
   }
   .game-over-text {
     font-size: 2rem;
