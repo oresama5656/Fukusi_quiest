@@ -95,26 +95,28 @@ body {
   /* ボタンエリア: 個別の枠を消して縦1列 */
   .command-window {
     flex: 1 1 0 !important;
-    grid-template-columns: 1fr !important; /* 縦1列 */
-    gap: 2px;
-    padding: 0;
-    margin-bottom: 0;
-    overflow: hidden;
-    border: none !important; /* 個別枠を消す */
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr 1fr 1fr !important; /* 3行均等 */
+    gap: 3px !important;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+    overflow: hidden !important;
+    border: none !important;
     box-shadow: none !important;
-    align-content: center;
+    align-content: stretch !important; /* 縦方向に引き伸ばす */
   }
 
   /* ボタン: コンパクト */
   .cmd-btn {
-    padding: 4px 3px !important; /* 少しだけ余白 */
-    font-size: 10px !important; /* 読みやすいサイズ */
+    padding: 4px 3px !important;
+    font-size: 10px !important;
     white-space: nowrap !important;
     text-align: left !important;
     border-width: 1px !important;
     min-height: 0 !important;
     overflow: hidden !important;
-    display: block !important;
+    display: flex !important;
+    align-items: center !important; /* ボタン内の文字を縦中央 */
   }
   .cmd-btn::before {
     content: none;
