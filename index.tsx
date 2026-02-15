@@ -81,9 +81,9 @@ body {
     min-width: 0;
     overflow: hidden;
     justify-content: flex-start !important;
-    border: 2px solid #fff;
-    padding: 3px;
-    gap: 2px;
+    border: 1px solid #fff; /* 枠を細く */
+    padding: 1px; /* 余白を最小限 */
+    gap: 1px;
   }
 
   /* 所持金: モバイルでは非表示（トップバーに移動） */
@@ -106,12 +106,13 @@ body {
 
   /* ボタン: コンパクト */
   .cmd-btn {
-    padding: 3px 2px;
-    font-size: 0.65rem;
+    padding: 2px 1px;
+    font-size: 0.5rem; /* さらに小さく */
     white-space: nowrap;
     justify-content: center;
     border-width: 1px;
     min-height: 0;
+    overflow: hidden;
   }
   .cmd-btn::before {
     content: none;
