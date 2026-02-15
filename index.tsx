@@ -13,7 +13,7 @@ body {
   color: #fff;
   font-family: 'DotGothic16', sans-serif;
   margin: 0;
-  height: 100vh;
+  height: 100dvh; /* Use dynamic viewport height */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,11 +24,13 @@ body {
 .game-container {
   width: 800px;
   max-width: 100%;
-  height: 100vh; /* Use vh to fill screen, relying on padding to push content up */
+  height: 100%;
+  max-height: 100dvh;
+  overflow-y: auto; /* Allow scrolling if content is too tall */
   display: flex;
   flex-direction: column;
   padding: 10px;
-  padding-bottom: 80px; /* Force extra space at bottom for address bar */
+  padding-bottom: 20px; /* Standard padding */
   box-sizing: border-box;
   position: relative;
 }
@@ -36,7 +38,7 @@ body {
 @media (max-width: 600px) {
   .game-container {
     padding: 5px;
-    padding-bottom: 80px; /* Ensure bottom padding on mobile */
+    padding-bottom: 20px;
   }
   .window {
     padding: 8px;
