@@ -24,41 +24,51 @@ body {
 .game-container {
   width: 800px;
   max-width: 100%;
-  height: 100dvh; /* Mobile browser address bar fix */
-  max-height: 100dvh;
+  height: 100%;
+  max-height: 100svh; /* Smallest Viewport Height to fit within visible area */
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
   position: relative;
 }
 
 @media (max-width: 600px) {
   .game-container {
-    padding: 10px;
+    padding: 5px;
   }
   .window {
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 8px;
+    margin-bottom: 5px;
   }
   .enemy-name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
   }
   .message-box {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
   .status-window {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    margin-bottom: 5px;
   }
   .money-value {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   .cmd-btn {
-    padding: 12px;
-    font-size: 1rem;
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+  .bottom-section {
+    height: 180px; /* Reduce height for mobile */
+    gap: 10px;
+  }
+  .player-area {
+    width: 140px; /* Reduce player image width */
   }
   .game-over-text {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 }
 
@@ -340,7 +350,7 @@ function startGame() {
   const elGameOverScreen = document.getElementById('game-over-screen');
   const elGameContainer = document.getElementById('game-container');
   const elPlayerImg = document.getElementById('player-img') as HTMLImageElement;
-  
+
   const btnDrink = document.getElementById('btn-drink') as HTMLButtonElement;
   const btnFlatter = document.getElementById('btn-flatter') as HTMLButtonElement;
   const btnLeave = document.getElementById('btn-leave') as HTMLButtonElement;
@@ -358,12 +368,12 @@ function startGame() {
   function updateMoney(amount) {
     money += amount;
     elMoney.innerText = money.toLocaleString();
-    
+
     // ダメージ演出
     if (amount < 0) {
       elMoney.style.color = 'red';
       elGameContainer.classList.add('shake-anim');
-      
+
       // 画像を「驚いた顔」に変更
       elPlayerImg.src = IMG_SHOCKED;
 
@@ -372,7 +382,7 @@ function startGame() {
         elGameContainer.classList.remove('shake-anim');
         // ゲームオーバーでなければ顔を戻す
         if (!isGameOver) {
-            elPlayerImg.src = IMG_NORMAL;
+          elPlayerImg.src = IMG_NORMAL;
         }
       }, 800);
     }
@@ -405,14 +415,14 @@ function startGame() {
   // 敵のターン
   function enemyTurn() {
     log("敵のターン！");
-    
+
     setTimeout(() => {
       // 敵の行動決定
       checkEnemyChange(); // 行動前に変身チェック
 
       setTimeout(() => {
         let damage = 0;
-        
+
         if (isBlackSuit) {
           // 黒服の攻撃
           log("黒服「VIPルームチャージ料になります」");
@@ -444,7 +454,7 @@ function startGame() {
             isGameOver = true;
             elGameOverScreen.style.display = 'flex';
             const gameOverImg = elGameOverScreen.querySelector('img');
-            if(gameOverImg) gameOverImg.src = IMG_GAMEOVER;
+            if (gameOverImg) gameOverImg.src = IMG_GAMEOVER;
           }, 1000);
         } else {
           // 次のターンへ
@@ -467,12 +477,12 @@ function startGame() {
       log("〇〇は お酒を飲んだ！");
       setTimeout(() => log("しかし 何も起こらない！"), 500);
       setTimeout(enemyTurn, 1500);
-    } 
+    }
     else if (type === 'flatter') {
       log("〇〇は 女の子を褒めた！");
       setTimeout(() => log("女の子は 上機嫌だ！"), 500);
       setTimeout(enemyTurn, 1500);
-    } 
+    }
     else if (type === 'leave') {
       log("〇〇は お会計をして帰ろうとした！");
       setTimeout(() => {
@@ -497,7 +507,7 @@ function startGame() {
   btnDrink.addEventListener('click', () => handleAction('drink'));
   btnFlatter.addEventListener('click', () => handleAction('flatter'));
   btnLeave.addEventListener('click', () => handleAction('leave'));
-  
+
   // リトライボタン
   const btnRetry = document.getElementById('btn-retry');
   if (btnRetry) {
