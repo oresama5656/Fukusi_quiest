@@ -45,64 +45,74 @@ body {
     padding-bottom: 20px;
   }
   .window {
-    padding: 4px;
-    margin-bottom: 3px;
+    padding: 3px;
+    margin-bottom: 2px;
     border-width: 2px;
   }
   .enemy-name {
-    font-size: 1.1rem;
-    margin-bottom: 3px;
+    font-size: 1rem;
+    margin-bottom: 2px;
   }
   .message-box {
-    font-size: 0.9rem;
-    line-height: 1.4;
+    font-size: 0.85rem;
+    line-height: 1.3;
   }
-  /* 下部セクション: 左右の高さを揃える */
+  /* 下部セクション: 画像の高さに合わせる */
   .bottom-section {
-    height: auto; /* 固定高さを廃止 */
-    gap: 4px;
+    height: 150px; /* 画像に合わせた固定高さ */
+    gap: 3px;
     align-items: stretch; /* 左右同じ高さ */
   }
-  /* キャラ画像: 幅固定・高さは自動 */
+  /* キャラ画像: 幅固定・高さはセクションに合わせる */
   .player-area {
     width: 130px;
     flex-shrink: 0;
-    align-items: stretch; /* 画像がエリア全体に */
   }
   .player-img {
     width: 100%;
-    height: 100%; /* エリアの高さに合わせる */
-    object-fit: cover; /* アスペクト比維持 */
+    height: 100%;
+    object-fit: cover;
   }
-  /* 右側: はみ出し防止・高さを左側に合わせる */
+  /* 右側: はみ出し防止＋高さをセクションに合わせる */
   .stats-area {
     min-width: 0;
-    overflow: hidden; /* はみ出し防止 */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* セクション高さに合わせる */
   }
+  /* 所持金: 高さを最小限に固定 (1の比率) */
   .status-window {
-    font-size: 0.8rem;
+    flex: 0 0 auto; /* 高さ固定・伸びない */
+    font-size: 0.7rem;
     margin-bottom: 2px;
-    padding: 3px 5px;
+    padding: 2px 3px;
     text-align: center;
   }
   .money-value {
-    font-size: 0.9rem;
-    margin-left: 3px;
+    font-size: 0.8rem;
+    margin-left: 2px;
   }
+  /* ボタンエリア: 残りの高さを全て使う (3の比率) */
   .command-window {
-    grid-template-columns: repeat(3, 1fr); /* 3列に戻す */
+    flex: 1 1 0; /* 残り全部 */
+    grid-template-columns: repeat(3, 1fr);
     gap: 2px;
-    padding: 3px; /* コンパクトな余白 */
+    padding: 2px;
+    margin-bottom: 0;
+    overflow: hidden; /* ボタンがはみ出さない */
   }
+  /* ボタン: 超小さく・枠内に完全に収まる */
   .cmd-btn {
-    padding: 5px 2px;
-    font-size: 0.65rem;
+    padding: 2px 1px;
+    font-size: 0.55rem;
     white-space: nowrap;
     justify-content: center;
-    border-width: 1px; /* ボタン枠も細く */
+    border-width: 1px;
+    min-height: 0; /* グリッドの最小サイズを無効化 */
   }
   .cmd-btn::before {
-    content: none; /* アイコン非表示でスペース節約 */
+    content: none; /* アイコン非表示 */
   }
   .game-over-text {
     font-size: 2rem;
