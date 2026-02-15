@@ -62,11 +62,15 @@ body {
     font-size: 0.9rem;
   }
   .bottom-section {
-    height: 160px; /* Further reduce height for mobile to ensure fit */
-    gap: 10px;
+    height: 210px; /* Increase height for 1-column buttons */
+    gap: 5px;
   }
   .player-area {
-    width: 130px; /* Further reduce player image width */
+    width: 90px; /* Shrink player image to save width */
+  }
+  .command-window {
+    grid-template-columns: 1fr; /* 1 column for buttons */
+    gap: 8px;
   }
   .game-over-text {
     font-size: 2rem;
