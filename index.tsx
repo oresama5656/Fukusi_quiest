@@ -13,12 +13,16 @@ body {
   color: #fff;
   font-family: 'DotGothic16', sans-serif;
   margin: 0;
-  height: 100dvh; /* Use dynamic viewport height */
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   user-select: none;
+}
+
+* {
+  box-sizing: border-box; /* 全要素に border-box を適用 */
 }
 
 .game-container {
@@ -41,50 +45,64 @@ body {
     padding-bottom: 20px;
   }
   .window {
-    padding: 4px; /* Smaller padding */
-    margin-bottom: 4px;
-    border-width: 2px; /* Thinner border */
+    padding: 4px;
+    margin-bottom: 3px;
+    border-width: 2px;
   }
   .enemy-name {
     font-size: 1.1rem;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
   .message-box {
     font-size: 0.9rem;
     line-height: 1.4;
   }
-  .status-window {
-    font-size: 0.9rem; /* Smaller text */
-    margin-bottom: 2px; /* Minimal margin */
-    padding: 2px 4px; /* Compact padding */
-  }
-  .money-value {
-    font-size: 1.0rem;
-    margin-left: 5px;
-  }
-  .cmd-btn {
-    padding: 4px 0px; /* Minimal padding */
-    font-size: 0.6rem; /* Very small font */
-    white-space: nowrap;
-    justify-content: center;
-  }
-  .cmd-btn::before {
-    margin-right: 2px; /* Reduce icon margin */
-  }
+  /* 下部セクション: 左右の高さを揃える */
   .bottom-section {
-    height: 140px; /* Reduced height */
-    gap: 2px;
+    height: auto; /* 固定高さを廃止 */
+    gap: 4px;
+    align-items: stretch; /* 左右同じ高さ */
   }
-  .stats-area {
-    min-width: 0; /* Allow shrinking */
-  }
+  /* キャラ画像: 幅固定・高さは自動 */
   .player-area {
     width: 130px;
-    flex-shrink: 0; /* Prevent shrinking */
+    flex-shrink: 0;
+    align-items: stretch; /* 画像がエリア全体に */
+  }
+  .player-img {
+    width: 100%;
+    height: 100%; /* エリアの高さに合わせる */
+    object-fit: cover; /* アスペクト比維持 */
+  }
+  /* 右側: はみ出し防止・高さを左側に合わせる */
+  .stats-area {
+    min-width: 0;
+    overflow: hidden; /* はみ出し防止 */
+  }
+  .status-window {
+    font-size: 0.8rem;
+    margin-bottom: 2px;
+    padding: 3px 5px;
+    text-align: center;
+  }
+  .money-value {
+    font-size: 0.9rem;
+    margin-left: 3px;
   }
   .command-window {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns (2 rows) to save width */
+    grid-template-columns: repeat(3, 1fr); /* 3列に戻す */
     gap: 2px;
+    padding: 3px; /* コンパクトな余白 */
+  }
+  .cmd-btn {
+    padding: 5px 2px;
+    font-size: 0.65rem;
+    white-space: nowrap;
+    justify-content: center;
+    border-width: 1px; /* ボタン枠も細く */
+  }
+  .cmd-btn::before {
+    content: none; /* アイコン非表示でスペース節約 */
   }
   .game-over-text {
     font-size: 2rem;
