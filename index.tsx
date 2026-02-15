@@ -57,24 +57,32 @@ body {
     margin-bottom: 5px;
   }
   .money-value {
-    font-size: 1.0rem; /* Shrink money font size */
+    font-size: 1.0rem;
+    margin-left: 5px; /* Reduce margin */
   }
   .cmd-btn {
-    padding: 4px 1px; /* Shrink button padding */
-    font-size: 0.75rem;
+    padding: 6px 0px; /* Maximize text space */
+    font-size: 0.7rem; /* Slightly smaller */
     white-space: nowrap;
+    justify-content: center; /* Center text */
+  }
+  .cmd-btn::before {
+    margin-right: 2px; /* Reduce icon margin */
   }
   .bottom-section {
-    height: 160px; /* Reduce height as buttons are now 1 row */
-    gap: 5px;
+    height: 160px;
+    gap: 2px; /* Reduce gap */
+  }
+  .stats-area {
+    min-width: 0; /* Allow shrinking */
   }
   .player-area {
     width: 130px;
     flex-shrink: 0; /* Prevent shrinking */
   }
   .command-window {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 4px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px; /* Reduce gap */
   }
   .game-over-text {
     font-size: 2rem;
