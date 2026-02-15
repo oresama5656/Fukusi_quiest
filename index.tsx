@@ -60,19 +60,20 @@ body {
     font-size: 1.2rem;
   }
   .cmd-btn {
-    padding: 8px;
-    font-size: 0.9rem;
+    padding: 6px 2px;
+    font-size: 0.75rem;
+    white-space: nowrap;
   }
   .bottom-section {
-    height: 210px; /* Increase height for 1-column buttons */
+    height: 160px; /* Reduce height as buttons are now 1 row */
     gap: 5px;
   }
   .player-area {
-    width: 90px; /* Shrink player image to save width */
+    width: 90px;
   }
   .command-window {
-    grid-template-columns: 1fr; /* 1 column for buttons */
-    gap: 8px;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 4px;
   }
   .game-over-text {
     font-size: 2rem;
