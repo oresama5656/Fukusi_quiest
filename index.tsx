@@ -107,9 +107,10 @@ body {
   /* ボタン: コンパクト */
   .cmd-btn {
     padding: 2px 1px;
-    font-size: 0.5rem; /* さらに小さく */
+    font-size: 0.5rem;
     white-space: nowrap;
     justify-content: center;
+    text-align: center; /* 文字を中央揃え */
     border-width: 1px;
     min-height: 0;
     overflow: hidden;
