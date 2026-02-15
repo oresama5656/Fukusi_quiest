@@ -44,12 +44,11 @@ body {
     padding: 5px;
     padding-bottom: 15px;
   }
-  /* モバイル: 枠を最小限に */
   .window {
     padding: 3px;
     margin-bottom: 2px;
     border-width: 2px;
-    box-shadow: none; /* 影を削除してスペース確保 */
+    box-shadow: none;
   }
   .enemy-name {
     font-size: 1rem;
@@ -60,13 +59,12 @@ body {
     line-height: 1.3;
   }
 
-  /* ===== 下部セクション: 完全リセット ===== */
+  /* ===== 下部セクション ===== */
   .bottom-section {
     height: 150px;
     gap: 3px;
-    align-items: stretch; /* 左右同じ高さに揃える */
+    align-items: stretch;
   }
-  /* キャラ画像 */
   .player-area {
     width: 130px;
     flex-shrink: 0;
@@ -75,53 +73,56 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-width: 2px; /* 枠を細く */
+    border-width: 2px;
   }
 
-  /* ===== 右エリア: 完全リセット ===== */
+  /* ===== 右エリア: 1つの枠にまとめる ===== */
   .stats-area {
     min-width: 0;
     overflow: hidden;
-    justify-content: flex-start !important; /* ★ space-between を無効化 */
+    justify-content: flex-start !important;
+    border: 2px solid #fff;
+    padding: 3px;
+    gap: 2px;
   }
 
-  /* 所持金: 1行で超コンパクト */
+  /* 所持金: 個別の枠を消す */
   .status-window {
     flex-shrink: 0;
     flex-grow: 0;
     font-size: 0.65rem;
-    padding: 2px 3px;
-    margin-bottom: 2px;
+    padding: 1px 2px;
+    margin-bottom: 0;
+    border: none !important; /* 個別枠を消す */
+    box-shadow: none !important;
     text-align: center;
-    border-width: 1px;
   }
   .money-value {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     margin-left: 2px;
   }
 
-  /* ボタンエリア: 残りの高さを全部使う */
+  /* ボタンエリア: 個別の枠を消して縦1列 */
   .command-window {
-    flex: 1 1 0 !important; /* ★ flex-grow を確実に適用 */
-    grid-template-columns: repeat(3, 1fr);
+    flex: 1 1 0 !important;
+    grid-template-columns: 1fr !important; /* 縦1列 */
     gap: 2px;
-    padding: 2px;
+    padding: 0;
     margin-bottom: 0;
     overflow: hidden;
-    border-width: 1px;
-    align-content: center; /* ボタンをエリアの中央に */
+    border: none !important; /* 個別枠を消す */
+    box-shadow: none !important;
+    align-content: center;
   }
 
-  /* ボタン: 極小サイズ */
+  /* ボタン: コンパクト */
   .cmd-btn {
-    padding: 3px 1px;
-    font-size: 0.55rem;
+    padding: 3px 2px;
+    font-size: 0.65rem;
     white-space: nowrap;
     justify-content: center;
     border-width: 1px;
     min-height: 0;
-    overflow: hidden;
-    text-overflow: ellipsis; /* 万が一はみ出したら省略 */
   }
   .cmd-btn::before {
     content: none;
