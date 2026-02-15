@@ -86,20 +86,9 @@ body {
     gap: 2px;
   }
 
-  /* 所持金: 個別の枠を消す */
+  /* 所持金: モバイルでは非表示（トップバーに移動） */
   .status-window {
-    flex-shrink: 0;
-    flex-grow: 0;
-    font-size: 0.65rem;
-    padding: 1px 2px;
-    margin-bottom: 0;
-    border: none !important; /* 個別枠を消す */
-    box-shadow: none !important;
-    text-align: center;
-  }
-  .money-value {
-    font-size: 0.75rem;
-    margin-left: 2px;
+    display: none !important;
   }
 
   /* ボタンエリア: 個別の枠を消して縦1列 */
@@ -368,6 +357,7 @@ const htmlContent = `
   <div class="top-section">
     <div class="window enemy-name" id="enemy-name-window">
       <span id="enemy-name">パブの女の子</span> が あらわれた！
+      <span id="top-money" style="display:none;"> | 所持金 <span id="top-money-value" class="money-value">50,000</span> 円</span>
     </div>
     <div class="window message-box" id="message-box">
       <div class="message-line">ぼったくり・イン・ザ・パブ へようこそ。</div>
@@ -435,6 +425,8 @@ function startGame() {
 
   // DOM要素の取得
   const elMoney = document.getElementById('money');
+  const elTopMoney = document.getElementById('top-money');
+  const elTopMoneyValue = document.getElementById('top-money-value');
   const elMessageBox = document.getElementById('message-box');
   const elEnemyName = document.getElementById('enemy-name');
   const elEnemyNameWindow = document.getElementById('enemy-name-window');
@@ -460,10 +452,15 @@ function startGame() {
   function updateMoney(amount) {
     money += amount;
     elMoney.innerText = money.toLocaleString();
+    // トップバーの所持金も更新
+    if (elTopMoneyValue) elTopMoneyValue.innerText = money.toLocaleString();
+    const elTopDisplay = document.getElementById('top-money-value-display');
+    if (elTopDisplay) elTopDisplay.innerText = money.toLocaleString();
 
     // ダメージ演出
     if (amount < 0) {
       elMoney.style.color = 'red';
+      if (elTopDisplay) elTopDisplay.style.color = 'red';
       elGameContainer.classList.add('shake-anim');
 
       // 画像を「驚いた顔」に変更
@@ -471,6 +468,7 @@ function startGame() {
 
       setTimeout(() => {
         elMoney.style.color = '#ffeb3b';
+        if (elTopDisplay) elTopDisplay.style.color = '#ffeb3b';
         elGameContainer.classList.remove('shake-anim');
         // ゲームオーバーでなければ顔を戻す
         if (!isGameOver) {
@@ -620,6 +618,8 @@ function startGame() {
   }
 
   // 開始ログ
+  // トップバーを所持金表示に切り替え
+  elEnemyNameWindow.innerHTML = '所持金 <span id="top-money-value-display" class="money-value">' + money.toLocaleString() + '</span> 円';
   log("あなたのターンです。コマンドを選択してください。");
 }
 
