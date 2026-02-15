@@ -69,7 +69,7 @@ body {
     gap: 5px;
   }
   .player-area {
-    width: 90px;
+    width: 130px;
   }
   .command-window {
     grid-template-columns: repeat(3, 1fr); /* 3 columns */
