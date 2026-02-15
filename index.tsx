@@ -3,6 +3,7 @@
 import imgNormal from './image/normal.png';
 import imgOdoroki from './image/odoroki.png';
 import imgNaki from './image/naki.png';
+import imgEnding from './image/ending.png';
 
 // ゲームのCSSスタイル定義
 const styles = `
@@ -352,6 +353,7 @@ body {
 const IMG_NORMAL = imgNormal;
 const IMG_SHOCKED = imgOdoroki;
 const IMG_GAMEOVER = imgNaki;
+const IMG_ENDING = imgEnding;
 
 // ゲームのHTML構造
 const htmlContent = `
@@ -395,7 +397,7 @@ const htmlContent = `
 
   <!-- ゲームクリア画面（非表示で初期化） -->
   <div id="game-clear-screen" class="game-clear-screen" style="display: none;">
-    <img src="${IMG_NORMAL}" alt="Game Clear" class="game-over-img" style="border-color: #4caf50; background: #eee;">
+    <img src="${IMG_ENDING}" alt="Game Clear" class="game-over-img" style="border-color: #4caf50; background: #eee;">
     <div class="game-clear-text">無事帰宅成功！</div>
     <button id="btn-reset" class="cmd-btn" style="margin-top: 20px; color: #fff; background: #333; border-color: #333;">明日も仕事だ…</button>
   </div>
